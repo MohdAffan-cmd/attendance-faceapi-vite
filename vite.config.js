@@ -12,5 +12,20 @@ export default defineConfig({
         secure: false,
       }
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        // This splits your node_modules into a separate 'vendor' file
+        // It helps with the 500kB warning and improves caching
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        }
+      }
+    },
+    // Optional: Increase the warning limit to 1000kB just in case
+    chunkSizeWarningLimit: 1000
   }
 })
