@@ -1,0 +1,17 @@
+{
+  "name": "attendance-faceapi-backend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "main": "server.cjs",
+  "scripts": {
+    "start": "node server.cjs"
+  },
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "cors": "^2.8.6",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1"
+  }
+}
+

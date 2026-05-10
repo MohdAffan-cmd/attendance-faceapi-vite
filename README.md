@@ -42,7 +42,9 @@ npm install
 
 Start the backend:
 ```bash
-npm run server
+cd backend
+npm install
+npm run start
 ```
 
 Start the frontend:
@@ -57,3 +59,14 @@ Open `http://localhost:5173` in your browser.
 ## Requirements
 
 The `public/models/` directory must contain the face-api.js model files for face recognition to work.
+
+---
+
+## Deploy (frontend only) to Vercel
+
+This repo is set up so Vercel only installs **frontend** dependencies. The backend lives in `backend/` and is not part of the Vercel build.
+
+Vercel settings:
+- **Framework Preset**: Vite
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`

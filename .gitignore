@@ -1,5 +1,6 @@
 node_modules/
 dist/
+backend/node_modules/
 
 # Logs / temp
 *.log
@@ -12,6 +13,11 @@ attendance.xlsx
 attendance_old.json
 attendance_old.xlsx
 Picture/
+backend/attendance.json
+backend/attendance.xlsx
+backend/attendance_old.json
+backend/attendance_old.xlsx
+backend/Picture/
 
 # OS / editor noise
 .DS_Store
