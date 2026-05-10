@@ -10,7 +10,13 @@ const EXCEL_FILE = path.join(__dirname, 'attendance.xlsx');
 const JSON_FILE = path.join(__dirname, 'attendance.json');
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+
+const PICTURES_DIR = path.join(__dirname, 'Picture');
+if (!fs.existsSync(PICTURES_DIR)) {
+    fs.mkdirSync(PICTURES_DIR);
+    console.log('Created Picture directory');
+}
 
 // Initialize Excel file if it doesn't exist
 async function initExcel() {
@@ -58,10 +64,18 @@ app.get('/api/attendance', (req, res) => {
 });
 
 app.post('/api/attendance', async (req, res) => {
-    const { name, date, signIn, signOut, duration, timestamp, mode } = req.body;
+    const { name, date, signIn, signOut, duration, timestamp, mode, image } = req.body;
     
     try {
-        // 1. Update Excel
+        // 0. Save image if provided
+        if (image) {
+            const base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
+            const action = mode === 'update' ? 'SignOut' : 'SignIn';
+            const fileName = `${name.replace(/[^a-z0-9]/gi, '_')}_${action}_${new Date().getTime()}.jpg`;
+            const filePath = path.join(PICTURES_DIR, fileName);
+            fs.writeFileSync(filePath, base64Data, 'base64');
+            console.log(`Saved capture: ${fileName}`);
+        }
         const workbook = new ExcelJS.Workbook();
         await workbook.xlsx.readFile(EXCEL_FILE);
         const sheet = workbook.getWorksheet('Attendance');
@@ -115,6 +129,14 @@ app.post('/api/attendance', async (req, res) => {
         console.error('Update error:', error);
         res.status(500).send({ error: 'Failed to update files' });
     }
+});
+
+// Serve static files from the Vite build directory
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Handle React routing, return all requests to React app
+app.use((req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 initExcel().then(() => {
