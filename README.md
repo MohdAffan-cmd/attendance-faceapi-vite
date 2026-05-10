@@ -1,67 +1,59 @@
-# Radiant Clinic Attendance (Face Recognition)
+# Radiant Clinic Attendance System
 
-A React + Vite attendance UI using `face-api.js` (browser) with an optional local Node/Express backend for saving attendance.
+A real-time face recognition attendance system built for Radiant Clinic. Staff attendance is marked automatically using webcam-based face detection — no manual sign-ins needed.
 
-## Tech stack
+---
 
-- **Frontend**: React 18, Vite 5, `face-api.js`, `lucide-react`
-- **Backend (local/dev)**: Node.js (JavaScript) + Express (`server.cjs`)
-- **Local storage (dev)**: `attendance.json`, `attendance.xlsx`, `Picture/` (captures)
+## Features
 
-## Run locally (frontend + backend)
+- Real-time face detection and recognition via webcam
+- Automatic attendance marking with timestamp
+- Attendance history log
+- Export attendance records to Excel (`.xlsx`)
+- Face capture and storage on registration
+- Demo mode when backend is unavailable
 
-Open **two terminals** in the project folder.
+---
 
-### Terminal 1: backend API
+## Tech Stack
+
+- **Frontend** — React 18, Vite 5
+- **Face Recognition** — face-api.js (runs in browser)
+- **Backend** — Node.js, Express
+- **Storage** — JSON, Excel (local dev)
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js v18+
+- npm
+
+### Installation
 
 ```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
 npm install
+```
+
+### Running the app
+
+Start the backend:
+```bash
 npm run server
 ```
 
-Backend runs on `http://localhost:5000`.
-
-### Terminal 2: frontend
-
+Start the frontend:
 ```bash
 npm run dev
 ```
 
-Frontend runs on the URL printed by Vite (usually `http://localhost:5173`).
+Open `http://localhost:5173` in your browser.
 
-## Notes about models
+---
 
-Face models are loaded from **`/models`**, so the repo must include:
+## Requirements
 
-- `public/models/*`
-
-## Deploy frontend-only to Vercel
-
-This deploys only the UI. The backend routes (`/api/attendance`) won’t exist on Vercel, so the app will automatically show **demo data** instead of crashing.
-
-1. Push this repo to GitHub.
-2. In Vercel: **New Project → Import** the repo.
-3. Set:
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. Deploy.
-
-## GitHub repo naming (suggestions)
-
-- `radiant-clinic-attendance`
-- `face-attendance-react`
-- `attendance-faceapi-vite`
-- `radiant-attendance-face-recognition`
-
-## Push to GitHub (example)
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
-
+The `public/models/` directory must contain the face-api.js model files for face recognition to work.
