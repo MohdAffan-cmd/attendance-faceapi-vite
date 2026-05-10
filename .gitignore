@@ -1,0 +1,19 @@
+node_modules/
+dist/
+
+# Logs / temp
+*.log
+debug_log.txt
+debug_log.bak
+
+# Local attendance data (generated at runtime)
+attendance.json
+attendance.xlsx
+attendance_old.json
+attendance_old.xlsx
+Picture/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+

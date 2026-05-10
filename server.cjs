@@ -14,7 +14,7 @@ app.use(express.json({ limit: '10mb' }));
 
 const PICTURES_DIR = path.join(__dirname, 'Picture');
 if (!fs.existsSync(PICTURES_DIR)) {
-    fs.mkdirSync(PICTURES_DIR);
+    fs.mkdirSync(PICTURES_DIR, { recursive: true });
     console.log('Created Picture directory');
 }
 
@@ -55,16 +55,21 @@ function initJson() {
 
 app.get('/api/attendance', (req, res) => {
     if (fs.existsSync(JSON_FILE)) {
-        const rawData = fs.readFileSync(JSON_FILE);
-        const jsonData = JSON.parse(rawData);
-        res.status(200).send(jsonData);
+        try {
+            const rawData = fs.readFileSync(JSON_FILE, 'utf8');
+            const jsonData = JSON.parse(rawData);
+            res.status(200).send(jsonData);
+        } catch (error) {
+            console.error('Failed to read attendance JSON:', error);
+            res.status(200).send([]);
+        }
     } else {
         res.status(200).send([]);
     }
 });
 
 app.post('/api/attendance', async (req, res) => {
-    const { name, date, signIn, signOut, duration, timestamp, mode, image } = req.body;
+    const { name, date, signIn, signOut, duration, timestamp, signOutTimestamp, mode, image } = req.body;
     
     try {
         // 0. Save image if provided
@@ -83,6 +88,7 @@ app.post('/api/attendance', async (req, res) => {
         if (mode === 'update') {
             let targetRow = null;
             sheet.eachRow((row, rowNumber) => {
+                if (rowNumber === 1) return; // skip header
                 if (row.getCell('name').value === name && 
                     row.getCell('date').value === date && 
                     !row.getCell('signOut').value) {
@@ -103,7 +109,7 @@ app.post('/api/attendance', async (req, res) => {
         // 2. Update JSON
         let jsonData = [];
         if (fs.existsSync(JSON_FILE)) {
-            const rawData = fs.readFileSync(JSON_FILE);
+            const rawData = fs.readFileSync(JSON_FILE, 'utf8');
             try {
                 jsonData = JSON.parse(rawData);
             } catch(e) {
@@ -115,10 +121,13 @@ app.post('/api/attendance', async (req, res) => {
             const index = jsonData.findLastIndex(item => item.name === name && item.date === date && !item.signOut);
             if (index !== -1) {
                 jsonData[index].signOut = signOut;
+                if (signOutTimestamp) {
+                    jsonData[index].signOutTimestamp = signOutTimestamp;
+                }
                 jsonData[index].duration = duration;
             }
         } else {
-            jsonData.push({ name, date, signIn, signOut, duration, timestamp });
+            jsonData.push({ name, date, signIn, signOut, duration, timestamp, signOutTimestamp: null });
         }
         
         fs.writeFileSync(JSON_FILE, JSON.stringify(jsonData, null, 4));

@@ -17,12 +17,43 @@ import {
 } from 'lucide-react';
 import './App.css';
 
+const DEMO_ATTENDANCE = [
+  {
+    name: 'ID: EMP101 (Staff)',
+    date: '2026-05-10',
+    signIn: '09:05:12',
+    signOut: '17:22:40',
+    timestamp: '2026-05-10T09:05:12.000Z',
+    signOutTimestamp: '2026-05-10T17:22:40.000Z',
+    duration: '8h 17m 28s',
+  },
+  {
+    name: 'ID: EMP204 (Doctor)',
+    date: '2026-05-10',
+    signIn: '10:12:03',
+    signOut: null,
+    timestamp: '2026-05-10T10:12:03.000Z',
+    signOutTimestamp: null,
+    duration: 'N/A',
+  },
+  {
+    name: 'ID: EMP305 (Staff)',
+    date: '2026-05-09',
+    signIn: '08:58:44',
+    signOut: '16:41:10',
+    timestamp: '2026-05-09T08:58:44.000Z',
+    signOutTimestamp: '2026-05-09T16:41:10.000Z',
+    duration: '7h 42m 26s',
+  },
+];
+
 function App() {
   const [currentPage, setCurrentPage] = useState(localStorage.getItem('currentPage') || 'login');
   const [modelsLoaded, setModelsLoaded] = useState(false);
   const [captureVideo, setCaptureVideo] = useState(false);
   const [attendance, setAttendance] = useState([]);
   const [error, setError] = useState(null);
+  const [usingDemoData, setUsingDemoData] = useState(false);
   const [testing, setTesting] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [employeeId, setEmployeeId] = useState('');
@@ -45,11 +76,24 @@ function App() {
   useEffect(() => {
     const fetchAttendance = async () => {
       try {
-        const response = await fetch('/api/attendance');
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2500);
+
+        const response = await fetch('/api/attendance', { signal: controller.signal });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) throw new Error(`API error ${response.status}`);
         const data = await response.json();
-        setAttendance(data.reverse());
+        if (Array.isArray(data)) {
+          setAttendance([...data].reverse());
+          setUsingDemoData(false);
+          return;
+        }
+        throw new Error('API returned non-array');
       } catch (err) {
         console.error("Failed to fetch attendance:", err);
+        setAttendance([...DEMO_ATTENDANCE]);
+        setUsingDemoData(true);
       }
     };
 
@@ -914,6 +958,13 @@ function App() {
         )}
 
       </header>
+
+      {usingDemoData && (
+        <div className="error-banner" style={{ background: 'rgba(14, 165, 233, 0.12)', borderColor: 'rgba(14, 165, 233, 0.25)' }}>
+          <AlertCircle size={20} />
+          <span>Demo mode: showing sample attendance (backend not connected).</span>
+        </div>
+      )}
 
       {error && (
         <div className="error-banner">
