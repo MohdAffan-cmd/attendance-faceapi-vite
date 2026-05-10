@@ -1,108 +1,43 @@
-[2026-05-10T05:36:46.106Z] [DebugLogger] Debug logging enabled
+[2026-05-10T09:06:30.747Z] [DebugLogger] Debug logging enabled
   {
     "logFile": "f:\\AzeezAttendanceJSFACEAPI\\debug_log.txt",
     "backupFile": "f:\\AzeezAttendanceJSFACEAPI\\debug_log.bak"
   }
 
-[2026-05-10T05:36:46.107Z] [Extension] Extension activating...
+[2026-05-10T09:06:30.747Z] [Extension] Extension activating...
   {
     "workspacePath": "f:\\AzeezAttendanceJSFACEAPI",
     "debugMaxLines": 500
   }
 
-[2026-05-10T05:36:46.111Z] [SecretService] Initialized successfully
+[2026-05-10T09:06:30.749Z] [SecretService] Initialized successfully
 
-[2026-05-10T05:36:46.113Z] [npmFinder] Starting to find npm executable...
+[2026-05-10T09:06:30.753Z] [npmFinder] Starting to find npm executable...
 
-[2026-05-10T05:36:50.593Z] [npmFinder] Success: Found npm in PATH, version: 10.9.2
+[2026-05-10T09:06:35.588Z] [npmFinder] Success: Found npm in PATH, version: 10.9.2
 
-[2026-05-10T05:36:50.593Z] [npmFinder] Executing command: npm config get prefix
+[2026-05-10T09:06:35.588Z] [npmFinder] Executing command: npm config get prefix
 
-[2026-05-10T05:36:55.588Z] [npmFinder] Successfully got npm prefix: C:\Users\Imtiaz\AppData\Roaming\npm
+[2026-05-10T09:06:42.697Z] [npmFinder] Successfully got npm prefix: C:\Users\Imtiaz\AppData\Roaming\npm
 
-[2026-05-10T05:36:55.591Z] [PluginManager] Loading plugins from file
+[2026-05-10T09:06:42.700Z] [PluginManager] Loading plugins from file
 
-[2026-05-10T05:36:55.592Z] [PluginManager:WARN] Plugin config file not found: C:\Users\Imtiaz\.claude\plugins\installed_plugins.json
+[2026-05-10T09:06:42.701Z] [PluginManager:WARN] Plugin config file not found: C:\Users\Imtiaz\.claude\plugins\installed_plugins.json
 
-[2026-05-10T05:36:55.594Z] [HooksConfigManager] Workspace path set to: f:\AzeezAttendanceJSFACEAPI
+[2026-05-10T09:06:42.701Z] [HooksConfigManager] Workspace path set to: f:\AzeezAttendanceJSFACEAPI
 
-[2026-05-10T05:36:55.595Z] [npmFinder] Starting to find npm executable...
+[2026-05-10T09:06:42.702Z] [npmFinder] Starting to find npm executable...
 
-[2026-05-10T05:36:55.612Z] [BackupManager] Workspace storage path: c:\Users\Imtiaz\AppData\Roaming\Code\User\workspaceStorage\510b33769c9fab0d599a9ebc36170435\lkbaba.claude-code-chatui
+[2026-05-10T09:06:42.716Z] [BackupManager] Workspace storage path: c:\Users\Imtiaz\AppData\Roaming\Code\User\workspaceStorage\510b33769c9fab0d599a9ebc36170435\lkbaba.claude-code-chatui
 
-[2026-05-10T05:36:55.612Z] [BackupManager] Backup repo path: c:\Users\Imtiaz\AppData\Roaming\Code\User\workspaceStorage\510b33769c9fab0d599a9ebc36170435\lkbaba.claude-code-chatui\backups\.git
+[2026-05-10T09:06:42.717Z] [BackupManager] Backup repo path: c:\Users\Imtiaz\AppData\Roaming\Code\User\workspaceStorage\510b33769c9fab0d599a9ebc36170435\lkbaba.claude-code-chatui\backups\.git
 
-[2026-05-10T05:36:55.697Z] [BackupManager] Backup repository already exists
+[2026-05-10T09:06:42.831Z] [BackupManager] Backup repository already exists
 
-[2026-05-10T05:36:57.685Z] [npmFinder] Success: Found npm in PATH, version: 10.9.2
+[2026-05-10T09:06:48.722Z] [npmFinder] Success: Found npm in PATH, version: 10.9.2
 
-[2026-05-10T05:36:57.686Z] [npmFinder] Executing command: npm config get prefix
+[2026-05-10T09:06:48.723Z] [npmFinder] Executing command: npm config get prefix
 
-[2026-05-10T05:36:59.782Z] [npmFinder] Successfully got npm prefix: C:\Users\Imtiaz\AppData\Roaming\npm
+[2026-05-10T09:06:51.837Z] [npmFinder] Successfully got npm prefix: C:\Users\Imtiaz\AppData\Roaming\npm
 
-[2026-05-10T05:36:59.782Z] [utils] npm prefix found at: C:\Users\Imtiaz\AppData\Roaming\npm
-
-[2026-05-10T05:40:57.315Z] [BackupManager] Workspace storage path: c:\Users\Imtiaz\AppData\Roaming\Code\User\workspaceStorage\510b33769c9fab0d599a9ebc36170435\lkbaba.claude-code-chatui
-
-[2026-05-10T05:40:57.316Z] [BackupManager] Backup repo path: c:\Users\Imtiaz\AppData\Roaming\Code\User\workspaceStorage\510b33769c9fab0d599a9ebc36170435\lkbaba.claude-code-chatui\backups\.git
-
-[2026-05-10T05:40:57.318Z] [BackupManager] Backup repository already exists
-
-[2026-05-10T05:40:57.320Z] [McpConfigManager] MCP servers merged
-  {
-    "userCount": 0,
-    "workspaceCount": 0,
-    "folderCount": 0,
-    "mergedCount": 0,
-    "resourceUri": "file:///f%3A/AzeezAttendanceJSFACEAPI"
-  }
-
-[2026-05-10T05:40:57.323Z] [UILoader] Loading UI v2
-
-[2026-05-10T05:40:57.498Z] [SecretService] Get API key for provider "gemini-api-key": not set
-
-[2026-05-10T05:40:57.499Z] [SecretService] Get API key for provider "grok-api-key": not set
-
-[2026-05-10T05:40:57.499Z] [Grok] Config sent to webview
-
-[2026-05-10T05:40:57.504Z] [SecretService] Get API key for provider "gemini-vertex-credentials": not set
-
-[2026-05-10T05:40:57.506Z] [Gemini] Config sent to webview
-
-[2026-05-10T05:40:58.045Z] [SecretService] Get API key for provider "anthropic-api-key": not set
-
-[2026-05-10T05:41:45.210Z] [SkillManager] Workspace path set to: f:\AzeezAttendanceJSFACEAPI
-
-[2026-05-10T05:41:45.211Z] [SkillManager] Loading skills from all sources
-
-[2026-05-10T05:41:45.213Z] [SkillManager] Workspace skills directory not found: f:\AzeezAttendanceJSFACEAPI\.claude\skills
-
-[2026-05-10T05:41:45.218Z] [SkillManager] Loaded user skill: skill-creator (enabled: true)
-
-[2026-05-10T05:41:45.220Z] [SkillManager] Plugin cache directory not found: C:\Users\Imtiaz\.claude\plugins\cache
-
-[2026-05-10T05:41:45.222Z] [SkillManager] Successfully loaded 1 skill(s) total
-
-[2026-05-10T05:41:45.222Z] [SkillManager]   - Workspace: 0
-
-[2026-05-10T05:41:45.222Z] [SkillManager]   - User: 1
-
-[2026-05-10T05:41:45.222Z] [SkillManager]   - Plugin: 0
-
-[2026-05-10T05:41:45.223Z] [SkillManager] Sent 1 skill(s) to webview
-
-[2026-05-10T05:41:59.268Z] [HooksConfigManager] Workspace path set to: f:\AzeezAttendanceJSFACEAPI
-
-[2026-05-10T05:41:59.269Z] [HooksConfigManager] Loading hooks from all settings files
-
-[2026-05-10T05:41:59.278Z] [HooksConfigManager] Loaded 0 hook(s) total
-
-[2026-05-10T05:41:59.278Z] [HooksConfigManager]   - Global: 0
-
-[2026-05-10T05:41:59.278Z] [HooksConfigManager]   - Project: 0
-
-[2026-05-10T05:41:59.279Z] [HooksConfigManager]   - Project-local: 0
-
-[2026-05-10T05:41:59.280Z] [HooksManager] Sent 0 hook(s) to webview
-
-[2026-05-10T05:42:06.486Z] [PluginManager] Sent 0 plugin(s) to webview (from cache)
+[2026-05-10T09:06:51.838Z] [utils] npm prefix found at: C:\Users\Imtiaz\AppData\Roaming\npm
